@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+      body{
+        background-color: rgb(221, 220, 220);
+        border: 5px solid rgb(84, 84, 84);
+      }
+
+        .oneMeme {
+          border-radius: 5px;
+            display: inline-block;
+            width: 20%;
+            margin: 5%;
+            max-height: 200px;
+            font-size: 20px;
+            color: rgb(63, 63, 109);
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .aa{
+          text-align: center;
+          font-size: 70px;
+          color: #999;
+        }
+
+      
+
+    </style>
+</head>
+
+<body>
+    <h1 class="aa"> SPA </h1>
+
+    <div id="txt"></div>
+
+    <div id="contents">
+
+
+      <div class="oneMeme"><img width="100%" src="assets/images/11.jpg"> <br><br> Paraguay<span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/12.jpg"> <br><br> Panama<span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/13.jpg"> <br><br>Republik Dominikan <span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/14.jpg"> <br><br> Argentina<span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/15.jpg"> <br><br> Spanish<span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/image_6.jpg"> <br><br> Guatemala<span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/our-menu-02.jpg"> <br><br> Chile<span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/our-menu-04.jpg"> <br><br> Costa Rica <span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/our-menu-05.jpg"> <br><br> Puerto Rico <span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/our-menu-06.jpg"> <br><br> Colombia<span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/our-menu-07.jpg"> <br><br> Ecuador<span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/13.jpg"> <br><br> Mexico<span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/photo-gallery-01.jpg"> <br><br> Nicaragua <span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/photo-gallery-thumb-16.jpg"> <br><br> El Salvador <span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/15.jpg"> <br><br> cuba<span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/image_6.jpg"> <br><br>  Guam<span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/11.jpg"> <br><br> Peru <span></span></div>
+      <div class="oneMeme"><img width="100%" src="assets/images/13.jpg"> <br><br>  Venezuela<span></span></div>
+
+      
+    </div>
+    <script>
+      fetch("https://restcountries.com/v3.1/lang/spa")
+          .then(function (response) {
+              return response.json();
+          })
+          .then(function (json) {
+
+              console.log(json);
+
+              for(var i=0; i < json.data.spa.length; i++){
+                  var oneMeme = "<img width='100%' src='" + json.data.spa[i].url + "'> <br> <span>" + json.data.memes[i].name + "</span>";
+                  document.querySelector("#contents").innerHTML += "<div class='oneMeme'>" + oneMeme + "</div>";
+              }
+          })
+          .catch(function (error) {
+              console.log('Request failed', error);
+          });
+
+  </script>
+</body>
+</html>
